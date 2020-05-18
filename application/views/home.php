@@ -1,6 +1,7 @@
     <!-- Masthead-->
     <header class="masthead" style="background-image: url('assets/img/header-bg.jpg')">
         <div class="container">
+            <?= $this->session->flashdata('message'); ?>
             <div class="masthead-subheading">Selamat Datang di</div>
             <div class="masthead-heading text-uppercase">Rumah Donasi</div>
             <p>Mari Kita Bantu Sesama pada Masa Pandemi Covid-19</p>
