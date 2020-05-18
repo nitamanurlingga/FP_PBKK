@@ -10,10 +10,51 @@ class Auth extends CI_Controller
     }
     public function login()
     {
-        $this->load->view('templates/auth_header');
-        $this->load->view('auth/login');
-        $this->load->view('templates/auth_footer');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/auth_header');
+            $this->load->view('auth/login');
+            $this->load->view('templates/auth_footer');
+        } else {
+            //Validasi sukses  
+            $this->_login();  //_ untuk menandakan private hanya untuk kelas ini saja  
+        }
     }
+
+    private function _login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();  //baca : select * dari tael user where email == $email  
+        if ($user) {
+            // jika user aktif  
+            if ($user['is_active'] == 1) {
+                if (password_verify($password, $user['password'])) {
+                    $data = [
+                        'email' => $user['email'],
+                        'role_id' => $user['role_id']
+                    ];
+                    $this->session->set_userdata($data);
+                    if ($user['role_id'] == 1) {
+                        redirect('welcome');
+                    } else {
+                        redirect('welcome');
+                    }
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Wrong password</div>');
+                    redirect('auth/login');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> This Account has been not activated! </div>');
+                redirect('auth/login');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email is not registered! </div>');
+            redirect('auth/login');
+        }
+    }
+
     public function register()
     {
         $this->form_validation->set_rules('name', 'Name', 'required|trim'); //trim agar jika menyisakan spasi di depan atau dibelakang akan dihapus agar tidak tersimpan di db  
