@@ -18,7 +18,7 @@
                     <?= $user['name'] ?>
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Buat program</a>
+                    <a class="dropdown-item" href="<?= base_url('program/create'); ?>">Buat program</a>
                     <a class="dropdown-item" href="#">List program</a>
                     <a class="dropdown-item" href="#">Something else here</a>
                     <div class="dropdown-divider"></div>
