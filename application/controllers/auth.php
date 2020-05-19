@@ -37,9 +37,9 @@ class Auth extends CI_Controller
                     ];
                     $this->session->set_userdata($data);
                     if ($user['role_id'] == 1) {
-                        redirect('welcome');
+                        redirect('user');
                     } else {
-                        redirect('welcome');
+                        redirect('user');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Wrong password</div>');
@@ -85,5 +85,17 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulation! Your account has been created. Please wait until your account is activated to create your program(s). </div>');
             redirect('welcome');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role_id');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> You have been logout. </div>');
+        redirect('welcome');
+    }
+    public function blocked()
+    {
+        $this->load->view('auth/blocked');
     }
 }
