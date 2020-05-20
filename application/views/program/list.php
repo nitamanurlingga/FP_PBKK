@@ -34,7 +34,7 @@
                                 <?php endif; ?></div>
                             <form class="user" method="post" action="<?= base_url('program/edit') ?>">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="id_program" name="id_program" value="<?= set_value($row->id) ?>" visibility: hidden>
+                                    <input type="text" class="form-control form-control-user" id="id_program" name="id_program" value="<?= $row->id ?>" visibility: hidden>
                                 </div>
                                 <button type="submit" class="btn btn-info btn-user">
                                     Edit Program
