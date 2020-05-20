@@ -16,7 +16,7 @@ class Program extends CI_Controller
         $this->form_validation->set_rules('description', 'Description', 'required|trim');
         $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|is_numeric|trim');
         $this->form_validation->set_rules('target', 'Target', 'required|is_numeric|trim');
-        $this->form_validation->set_rules('image', 'Image', 'required');
+        // $this->form_validation->set_rules('image', 'Image', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/auth_header');
             $this->load->view('program/create.php');
@@ -56,7 +56,7 @@ class Program extends CI_Controller
             ];
             $this->db->insert('program', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulation! Your program has been created.</div>');
-            redirect('user');
+            redirect('program/list');
         }
     }
 
@@ -124,7 +124,7 @@ class Program extends CI_Controller
             $this->db->update('program');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulation! Your program has been edited.</div>');
-            redirect('user');
+            redirect('program/list');
         }
     }
 }

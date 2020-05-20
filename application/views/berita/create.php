@@ -39,7 +39,7 @@
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="<?= base_url('user') ?>">Back</a>
+                                    <a class="small" href="<?= base_url('program/list') ?>">Back</a>
                                 </div>
                             </div>
                         </div>

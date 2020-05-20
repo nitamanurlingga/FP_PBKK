@@ -54,6 +54,11 @@
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading"><?= $row->name ?></div>
                                 <div class="portfolio-caption-subheading text-muted"><?= $row->place ?></div>
+                                <?php if ($row->status == 1) : ?>
+                                    <div>Status: Berlangsung</div>
+                                <?php else : ?>
+                                    <div>Status: Selesai</div>
+                                <?php endif ?>
                             </div>
                         </div>
                     </div>

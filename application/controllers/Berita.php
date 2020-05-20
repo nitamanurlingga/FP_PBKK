@@ -44,7 +44,7 @@ class Berita extends CI_Controller
             ];
             $this->db->insert('berita', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulation! Your berita acara has been created.</div>');
-            redirect('user');
+            redirect('program/list');
         }
     }
 }

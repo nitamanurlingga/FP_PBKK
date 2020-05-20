@@ -21,9 +21,10 @@ class Welcome extends CI_Controller
 	 */
 	public function index()
 	{
+		$program['program'] = $this->db->get('program')->result();
 		$this->load->view('templates/header.php');
 		$this->load->view('templates/navbar.php');
-		$this->load->view('home');
-		$this->load->view('templates/footer.php');
+		$this->load->view('home', $program);
+		$this->load->view('templates/footer.php', $program);
 	}
 }
