@@ -43,9 +43,6 @@
                                 <div class="form-group row">
                                     <div class="col-sm-2">Foto</div>
                                     <div class="col-sm-10">
-                                        <div class="col-sm-3"></div>
-                                        <img src="" alt="" class="img-thumbnail">
-                                        <div class="col-sm-9"></div>
                                         <div class="row">
                                             <input type="file" class="form-control form-control-user" id="image" name="image">
                                             <?= form_error('image', '<small class="text-danger pl-3">', '</small>'); ?>

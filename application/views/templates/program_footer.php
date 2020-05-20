@@ -24,25 +24,11 @@
                                 <p><?= $row->description ?></p>
                                 <ul class="list-inline">
                                     <li>Date: <?= date('d F Y', $row->date_created); ?></li>
-                                    <li>Donasi terkumpul: Rp <?= $row->jumlah ?></li>
-                                    <li>Target donasi: Rp <?= $row->target ?></li>
-                                    <br>
-                                    <?php
-                                    $penyelenggaraId = $row->penyelenggara_id;
-                                    $queryPenyelenggara = "SELECT *  
-                                    FROM `user`    
-                                    WHERE `user`.`id` = $penyelenggaraId 
-                                    ";
-                                    $penyelenggara = $this->db->query($queryPenyelenggara)->result_array();
-                                    ?>
-                                    <!-- <?php echo print_r($penyelenggara); ?> -->
-
-                                    <li>Penyelenggara: <?php echo $penyelenggara[0]['name']; ?></li>
-                                    <li>Nomor Hp: <?= $penyelenggara[0]['no_hp']; ?></li>
                                     <?php if ($row->status == 1) : ?>
                                         <li>Status: Berlangsung</li>
                                     <?php else : ?>
                                         <li>Status: Selesai</li>
+
                                         <?php
                                         $programId = $row->id;
                                         $queryBerita = "SELECT *
@@ -63,12 +49,19 @@
                                                 <p><?= $berita[0]['description'] ?></p>
 
                                             </div>
+                                        <?php else : ?>
+                                            <form class="user" method="post" action="<?= base_url('berita/create') ?>">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="id_program" name="id_program" value="<?= $row->id ?>" visibility: hidden>
+                                                </div>
+                                                <button type="submit" class="btn btn-info btn-user">
+                                                    Buat Berita Acara
+                                                </button>
+                                            </form>
                                         <?php endif; ?>
                                         <!-- End Berita -->
-
                                     <?php endif; ?>
                                 </ul>
-                                <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times mr-1"></i>Close Project</button>
                             </div>
                         </div>
                     </div>

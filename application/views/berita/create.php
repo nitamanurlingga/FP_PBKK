@@ -9,43 +9,24 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Create Program!</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">Create Berita Acara!</h1>
                                 </div>
-                                <!-- <form class="user" method="post" action="<?= base_url('program/create') ?>" enctype="multipart/form-data"> -->
-                                <?= form_open_multipart('program/create'); ?>
+                                <!-- <form class="user" method="post" action="<?= base_url('berita/create') ?>" enctype="multipart/form-data"> -->
+                                <?= form_open_multipart('berita/create'); ?>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Nama program...">
+                                    <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Judul berita acara...">
                                     <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="place" name="place" placeholder="Alamat program...">
-                                    <?= form_error('place', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
                                     <textarea type="text" class="form-control form-control-user" id="description" name="description" placeholder="Deskripsi program..."></textarea>
                                     <?= form_error('description', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="jumlah" name="jumlah" placeholder="Jumlah donasi saat ini..">
-                                    <?= form_error('jumlah', '<small class="text-danger pl-3">', '</small>'); ?>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="target" name="target" placeholder="Target donasi...">
-                                    <?= form_error('target', '<small class="text-danger pl-3">', '</small>'); ?>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control form-control-user" id="status" name="status">
-                                        <option>Berlangsung</option>
-                                        <option>Selesai</option>
-                                    </select>
-                                    <?= form_error('status', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <input type="text" class="form-control form-control-user" id="id_program" name="id_program" value="<?= $program['id'] ?>" visibility: hidden>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-2">Foto</div>
                                     <div class="col-sm-10">
-                                        <div class="col-sm-3"></div>
-                                        <img src="" alt="" class="img-thumbnail">
-                                        <div class="col-sm-9"></div>
                                         <div class="row">
                                             <input type="file" class="form-control form-control-user" id="image" name="image">
                                             <?= form_error('image', '<small class="text-danger pl-3">', '</small>'); ?>
@@ -53,7 +34,7 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-info btn-user btn-block">
-                                    Create Program
+                                    Create Berita Acara
                                 </button>
                                 </form>
                                 <hr>

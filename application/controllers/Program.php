@@ -14,6 +14,8 @@ class Program extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('place', 'Place', 'required|trim');
         $this->form_validation->set_rules('description', 'Description', 'required|trim');
+        $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|is_numeric|trim');
+        $this->form_validation->set_rules('target', 'Target', 'required|is_numeric|trim');
         // $this->form_validation->set_rules('image', 'Image', 'required');
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/auth_header');
@@ -34,6 +36,11 @@ class Program extends CI_Controller
                     echo $this->upload->display_errors();
                 }
             }
+            if ($this->input->post('status') == 'Berlangsung') {
+                $status = 1;
+            } else {
+                $status = 2;
+            }
 
 
             $data = [
@@ -41,7 +48,9 @@ class Program extends CI_Controller
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'place' => htmlspecialchars($this->input->post('place', true)),
                 'description' => htmlspecialchars($this->input->post('description', true)),
-                'status' => 1,
+                'jumlah' => htmlspecialchars($this->input->post('jumlah', true)),
+                'target' => htmlspecialchars($this->input->post('target', true)),
+                'status' => $status,
                 'image' => $new_image,
                 'date_created' => time()
             ];
@@ -49,5 +58,25 @@ class Program extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulation! Your program has been created.</div>');
             redirect('user');
         }
+    }
+
+    public function list()
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $program['program'] = $this->db->get_where('program', ['penyelenggara_id' => $data['user']['id']])->result();
+        // $program['donasi'] = $this->db->get_where('program', ['penyelenggara_id' => $data['user']['id']])->result();
+        $this->load->view('templates/auth_header');
+        $this->load->view('templates/clear_navbar', $data);
+        $this->load->view('program/list.php', $data);
+        $this->load->view('templates/program_footer', $program);
+    }
+
+    public function edit()
+    {
+        $id_program = $this->input->post('id_program');
+        $program['program'] = $this->db->get_where('program', ['id' => $id_program])->row_array();
+        $this->load->view('templates/auth_header');
+        $this->load->view('program/edit.php',);
+        $this->load->view('templates/auth_footer');
     }
 }
