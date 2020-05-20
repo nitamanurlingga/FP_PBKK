@@ -20,7 +20,6 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="<?= base_url('program/create'); ?>">Buat program</a>
                     <a class="dropdown-item" href="<?= base_url('program/list'); ?>">List program</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Logout</a>
                 </div>

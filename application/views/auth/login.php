@@ -2,6 +2,7 @@
     <!-- Portfolio Grid-->
     <section class="page-section bg-warning" id="login">
         <div class="container">
+            <?= $this->session->flashdata('message'); ?>
             <!-- Outer Row -->
             <div class="row justify-content-center">
                 <div class="col-lg-7">

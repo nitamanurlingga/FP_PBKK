@@ -11,8 +11,18 @@
                 <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"><button type="button" class="btn btn-warning">Login</button></a></li> -->
                 <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li> -->
             </ul>
-            <a class="nav-link js-scroll-trigger" href="<?= base_url('auth/login'); ?>"><button type="button" class="btn btn-warning">Login</button></a></li>
-            <a class="nav-link js-scroll-trigger" href="<?= base_url('auth/register'); ?>"><button type="button" class="btn btn-warning">Register</button></a></li>
+            <!-- <a class="nav-link js-scroll-trigger" href="#"><button type="button" class="btn btn-warning"><?= $user['name'] ?></button></a></li> -->
+            <!-- dropdown -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?= $user['name'] ?>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="<?= base_url('verifikasi'); ?>">List User</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
